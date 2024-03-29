@@ -1,5 +1,7 @@
 package com.poly.Entity.Hotels;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,10 +16,10 @@ public class HotelRoom {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@ManyToOne() @JoinColumn(name="BookingID")
-	private int RoomID;	
+	private int RoomID;
 	HotelBooking hotelBooking ;
 	@ManyToOne @JoinColumn(name = "HotelID")
-	private Hotel HotelID;
+	List<Hotel> HotelID ; 
 	private String RoomType;
 	private boolean isAvailable;
 	private boolean isBooking;
@@ -26,14 +28,6 @@ public class HotelRoom {
 	public HotelRoom() {
 		super();
 	}
-	
-	public Hotel getHotelID() {
-		return HotelID;
-	}
-
-	public void setHotelID(Hotel hotelID) {
-		HotelID = hotelID;
-	}
 
 	public int getRoomID() {
 		return RoomID;
@@ -41,6 +35,22 @@ public class HotelRoom {
 
 	public void setRoomID(int roomID) {
 		RoomID = roomID;
+	}
+
+	public HotelBooking getHotelBooking() {
+		return hotelBooking;
+	}
+
+	public void setHotelBooking(HotelBooking hotelBooking) {
+		this.hotelBooking = hotelBooking;
+	}
+
+	public List<Hotel> getHotelID() {
+		return HotelID;
+	}
+
+	public void setHotelID(List<Hotel> hotelID) {
+		HotelID = hotelID;
 	}
 
 	public String getRoomType() {
@@ -74,6 +84,8 @@ public class HotelRoom {
 	public void setDeleted(boolean isDeleted) {
 		this.isDeleted = isDeleted;
 	}
+	
+
 	
 	
 	

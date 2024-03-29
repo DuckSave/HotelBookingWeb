@@ -1,5 +1,9 @@
 package com.poly.Entity.Hotels;
 
+import java.util.List;
+
+import com.poly.Entity.Bookings.Bookings;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -11,31 +15,34 @@ import jakarta.persistence.Table;
 @Table(name="HotelBooking")
 public class HotelBooking {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int HotelBookingID;
+	@OneToMany(mappedBy = "BookingID")
+	List<Bookings> BookingID ; 
+	@Id 
 	@OneToMany(mappedBy = "RoomID")
-	HotelRoom RoomID;
+	List<HotelRoom> RoomID ; 
 	
 	public HotelBooking() {
 		super();
 		
 	}
 
-	public int getHotelBookingID() {
-		return HotelBookingID;
+	public List<Bookings> getBookingID() {
+		return BookingID;
 	}
 
-	public void setHotelBookingID(int HotelBookingID) {
-		this.HotelBookingID = HotelBookingID;
+	public void setBookingID(List<Bookings> bookingID) {
+		BookingID = bookingID;
 	}
 
-	public HotelRoom getRoomID() {
+	public List<HotelRoom> getRoomID() {
 		return RoomID;
 	}
 
-	public void setRoomID(HotelRoom roomID) {
+	public void setRoomID(List<HotelRoom> roomID) {
 		RoomID = roomID;
 	}
+
+	
 	
 	
 }

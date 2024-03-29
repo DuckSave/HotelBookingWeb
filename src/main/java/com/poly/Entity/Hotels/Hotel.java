@@ -1,6 +1,7 @@
 package com.poly.Entity.Hotels;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import jakarta.persistence.Entity;
@@ -11,12 +12,12 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Hotel")
+@Table(name ="Hotels")
 public class Hotel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int HotelID;
-	private String Name;
+	private String NameHotel;
 	private String Location;
 	private int Stars;
 	private String ImageURL;
@@ -24,15 +25,15 @@ public class Hotel {
 	private boolean isDeleted;
 	
 	@OneToMany(mappedBy = "RoomID")
-    HotelRoom RoomID;
+	List<HotelRoom> RoomID ; 
 	
 	public Hotel() {
 		super();
 	}
 
-	public Hotel(String name, String location, int stars, String imageURL, String description, boolean isDeleted) {
+	public Hotel(String NameHotel, String location, int stars, String imageURL, String description, boolean isDeleted) {
 		super();
-		Name = name;
+		this.NameHotel = NameHotel;
 		Location = location;
 		Stars = stars;
 		ImageURL = imageURL;
@@ -54,14 +55,14 @@ public class Hotel {
 
 
 
-	public String getName() {
-		return Name;
+	public String getNameHotel() {
+		return NameHotel;
 	}
 
 
 
-	public void setName(String name) {
-		Name = name;
+	public void setNameHotel(String NameHotel) {
+		this.NameHotel = NameHotel;
 	}
 
 

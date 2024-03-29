@@ -1,6 +1,8 @@
 package com.poly.Entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -8,13 +10,14 @@ import jakarta.persistence.Table;
 @Table(name="Account")
 public class Account {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int AccountID;
 	private String Name;
 	private String Email;
 	private String Password;
 	private String Phone;
 	private String Address;
-	private boolean Role;
+	private boolean isManager;
 	private boolean isDeleted;
 	
 	
@@ -28,7 +31,7 @@ public class Account {
 	
 
 
-	public Account(String name, String email, String password, String phone, String address, boolean role,
+	public Account(String name, String email, String password, String phone, String address, boolean isManager,
 			boolean isDeleted) {
 		super();
 		Name = name;
@@ -36,7 +39,7 @@ public class Account {
 		Password = password;
 		Phone = phone;
 		Address = address;
-		Role = role;
+		this.isManager = isManager;
 		this.isDeleted = isDeleted;
 	}
 
@@ -114,13 +117,13 @@ public class Account {
 	}
 
 
-	public boolean isRole() {
-		return Role;
+	public boolean isisManager() {
+		return isManager;
 	}
 
 
-	public void setRole(boolean role) {
-		Role = role;
+	public void setisManager(boolean isManager) {
+		this.isManager = isManager;
 	}
 	
 	

@@ -56,7 +56,7 @@ public class AccountServlet extends HttpServlet {
     	account.setPassword(request.getParameter("password"));
     	account.setPhone(request.getParameter("Phone"));
     	account.setAddress(request.getParameter("Address"));
-    	account.setRole(false);
+    	account.setisManager(false);
     	account.setDeleted(false);
     	accountService.register(account);
     	response.sendRedirect("/login");

@@ -1,11 +1,14 @@
 package com.poly.Entity.Cars;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "Cars")
 public class Cars {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,12 +17,15 @@ public class Cars {
 	private String Name ; 
 	private String Type ; 
 	private String ImageURL ; 
-	private String Description ; 
+	private String Description ; 	
 	private boolean isDeleted ;
+	
 	public Cars() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
+	
+	
 	public int getCarID() {
 		return CarID;
 	}
