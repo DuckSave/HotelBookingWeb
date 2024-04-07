@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.poly.Entity.Account;
 import com.poly.JPAConfig.JpaConfig;
+
 import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.EntityManager;
 
@@ -74,14 +75,18 @@ public class AccountRepository implements IAcountRepository{
 	@Override
 	public Account findAccountByEmail(String email) {
 		
-		 try {
-		        return em.createQuery("SELECT a FROM Account a WHERE a.Email = :email", Account.class)
-		                 .setParameter("email", email)
-		                 .getSingleResult();
-		    } catch (Exception e) {
-		        // Handle no result exception or any other exception as needed
-		        return null;
-		    }
+	
+		List<Account> result = em.createQuery("SELECT a FROM Account a WHERE a.email = :email", Account.class)
+		         .setParameter("email", email)
+		         .getResultList();
+		
+		
+		if(result.size() == 1) {
+			return result.get(0);
+		}else {
+			return null;
+		}
+			
 	}
 
 	@Override

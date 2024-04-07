@@ -9,17 +9,22 @@ public class AccountService {
 	
 	public Account register(Account account) throws Exception {
 		
-		if(accountRepository.findAccountByEmail(account.getEmail()) != null) {
-			throw new Exception("Account already exists.");
+		Account accountOfEmail = accountRepository.findAccountByEmail(account.getEmail());
+		if(accountOfEmail == null) {
+			accountRepository.addAccount(account);
+			return account;
+		}else {
+			return null;
+	        
 		}
-		accountRepository.addAccount(account);
-        return account;
+		
 	}
 	
 	public Account login(String email, String password) throws Exception {
 		Account account = accountRepository.findByEmailAndPassword(email, password);
         if(account == null) {
-            throw new Exception("Invalid credentials.");
+			/* throw new Exception("Invalid credentials."); */
+            return null;
         }
         return account;
 	}

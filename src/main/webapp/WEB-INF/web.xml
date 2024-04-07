@@ -49,4 +49,24 @@
     <servlet-name>hu</servlet-name>
     <url-pattern>/hu</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminServlet</display-name>
+    <servlet-name>AdminServlet</servlet-name>
+    <servlet-class>com.poly.controller.AdminServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminServlet</servlet-name>
+    <url-pattern>/AdminServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>HotelServlet</display-name>
+    <servlet-name>HotelServlet</servlet-name>
+    <servlet-class>com.poly.controller.HotelServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>HotelServlet</servlet-name>
+    <url-pattern>/HotelServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

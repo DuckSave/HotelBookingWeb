@@ -1,5 +1,6 @@
 package com.poly.Entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -7,126 +8,110 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="Account")
+@Table(name = "Account")
 public class Account {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int AccountID;
-	private String Name;
-	private String Email;
-	private String Password;
-	private String Phone;
-	private String Address;
-	private boolean isManager;
-	private boolean isDeleted;
-	
-	
-	
-	public Account() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "AccountID")
+    private Integer accountID;
 
+    @Column(name = "Name")
+    private String name;
 
-	
+    @Column(name = "Email")
+    private String email;
 
+    @Column(name = "Password")
+    private String password;
 
-	public Account(String name, String email, String password, String phone, String address, boolean isManager,
-			boolean isDeleted) {
-		super();
-		Name = name;
-		Email = email;
-		Password = password;
-		Phone = phone;
-		Address = address;
-		this.isManager = isManager;
-		this.isDeleted = isDeleted;
-	}
+    @Column(name = "Phone")
+    private String phone;
 
+    @Column(name = "Address")
+    private String address;
+    
+    @Column (name = "isManager")
+    private boolean isManager;
 
+    @Column(name = "isDelete")
+    private boolean isDelete;
 
+    // Constructors, getters, and setters
+    public Account() {}
 
+    public Account(String name, String email, String password, String phone, String address,boolean isManager, boolean isDelete) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.phone = phone;
+        this.address = address;
+        this.isManager = isManager;
+        this.isDelete = isDelete;
+    }
 
-	public int getAccountID() {
-		return AccountID;
-	}
+    // Getters and setters
+    public Integer getAccountID() {
+        return accountID;
+    }
 
+    public void setAccountID(Integer accountID) {
+        this.accountID = accountID;
+    }
 
-	public void setAccountID(int accountID) {
-		AccountID = accountID;
-	}
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public String getName() {
-		return Name;
-	}
+    public String getEmail() {
+        return email;
+    }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setName(String name) {
-		Name = name;
-	}
+    public String getPassword() {
+        return password;
+    }
 
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public String getEmail() {
-		return Email;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public void setEmail(String email) {
-		Email = email;
-	}
+    public String getAddress() {
+        return address;
+    }
 
+    public void setAddress(String address) {
+        this.address = address;
+    }
 
-	public String getPassword() {
-		return Password;
-	}
-
-
-	public void setPassword(String password) {
-		Password = password;
-	}
-
-
-	public String getPhone() {
-		return Phone;
-	}
-
-
-	public void setPhone(String phone) {
-		Phone = phone;
-	}
-
-
-	public String getAddress() {
-		return Address;
-	}
-
-
-	public void setAddress(String address) {
-		Address = address;
-	}
-
-
-	public boolean isDeleted() {
-		return isDeleted;
-	}
-
-
-	public void setDeleted(boolean isDeleted) {
-		this.isDeleted = isDeleted;
-	}
-
-
-	public boolean isisManager() {
+    public boolean isManager() {
 		return isManager;
 	}
 
-
-	public void setisManager(boolean isManager) {
+	public void setManager(boolean isManager) {
 		this.isManager = isManager;
 	}
-	
-	
-	
-	
+
+	public boolean isDelete() {
+        return isDelete;
+    }
+
+    public void setDelete(boolean delete) {
+        isDelete = delete;
+    }
 }

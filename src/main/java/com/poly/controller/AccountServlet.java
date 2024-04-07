@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.util.List;
 
 import com.poly.Entity.Account;
-import com.poly.Entity.Course;
 import com.poly.Service.AccountService;
 
 @WebServlet({"/register","/login"})
@@ -51,15 +50,22 @@ public class AccountServlet extends HttpServlet {
     
     public void register(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	Account account = new Account();
-    	account.setName(request.getParameter("fullName"));
+    	account.setName(request.getParameter("Name"));
     	account.setEmail(request.getParameter("Email"));
-    	account.setPassword(request.getParameter("password"));
+    	account.setPassword(request.getParameter("Password"));
     	account.setPhone(request.getParameter("Phone"));
     	account.setAddress(request.getParameter("Address"));
-    	account.setisManager(false);
-    	account.setDeleted(false);
-    	accountService.register(account);
-    	response.sendRedirect("/login");
+    	account.setManager(false);
+    	account.setDelete(false);
+    	System.out.println(request.getParameter("Name"));
+    	Account checklogin = accountService.register(account);
+    	if(checklogin == null) {
+    		request.setAttribute("message", "email da ton tai");
+    		request.getRequestDispatcher("views/registerForm.jsp").forward(request, response);
+    	}else {
+    		request.getRequestDispatcher("views/login.html").forward(request, response);
+    	}
+    	
     }
 
 	
